@@ -83,7 +83,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
     if lat1 >= lat2:
       if (i.lat <= lat1) and (i.lon <= lon1) and (i.lat >= lat2) and (i.lon >= lon2):
         within.append(i)
-      elif lat1 <= lat2:
+    elif lat1 <= lat2:
         if (i.lat >= lat1) and (i.lon >= lon1) and (i.lat <= lat2) and (i.lon <= lon2):
           within.append(i)
 

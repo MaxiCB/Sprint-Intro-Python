@@ -24,97 +24,97 @@ humans = [
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with 'D':
 print("Starts with D:")
-a = []
+a = [n.name for n in humans if n.name[0] == 'D']
 # Iterate through all humans
-for i in humans:
-    # Check if the first char in the string is 'D'
-    if i.name[0] == "D":
-        # If so append the human's name to the a array
-        a.append(i.name)
+# for i in humans:
+#     # Check if the first char in the string is 'D'
+#     if i.name[0] == "D":
+#         # If so append the human's name to the a array
+#         a.append(i.name)
 print(a)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name ends in "e".
 print("Ends with e:")
-b = []
+b = [n.name for n in humans if n.name[len(n.name) - 1] == 'e']
 # Iterate over all humans
-for i in humans:
-    # Check the last char in the name to 'e'
-    if i.name[len(i.name) - 1] == "e":
-        # If the last char is 'e' append it to b array
-        b.append(i.name)
+# for i in humans:
+#     # Check the last char in the name to 'e'
+#     if i.name[len(i.name) - 1] == "e":
+#         # If the last char is 'e' append it to b array
+#         b.append(i.name)
 print(b)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 print("Starts between C and G, inclusive:")
-c = []
+c = [n.name for n in humans if n.name[0] >= 'C' and n.name[0] <= 'G']
 # Iterate over all humans
-for i in humans:
-    # Check if the first char is between 'C' and 'G'
-    if (i.name[0] >= 'C') and (i.name[0] <= 'G'):
-        # If so append the name to c array
-        c.append(i.name)
+# for i in humans:
+#     # Check if the first char is between 'C' and 'G'
+#     if (i.name[0] >= 'C') and (i.name[0] <= 'G'):
+#         # If so append the name to c array
+#         c.append(i.name)
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
 print("Ages plus 10:")
-d = []
+d = [n.age+10 for n in humans]
 # Iterate over all humans
-for i in humans:
-    # Add 10 to all of the humans age and append it to d array
-    d.append(i.age + 10)
+# for i in humans:
+#     # Add 10 to all of the humans age and append it to d array
+#     d.append(i.age + 10)
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
 # joined to the age with a hyphen, for example "David-31", for all humans.
 print("Name hyphen age:")
-e = []
+e = [n.name+"-"+str(n.age) for n in humans]
 # Iterate over all humans
-for i in humans:
-    # Append the name and age to the e array in ('Name'-Age) format
-    e.append(i.name + "-" + str(i.age))
+# for i in humans:
+#     # Append the name and age to the e array in ('Name'-Age) format
+#     e.append(i.name + "-" + str(i.age))
 print(e)
 
 # Write a list comprehension that creates a list of tuples containing name and
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
 print("Names and ages between 27 and 32:")
-f = []
+f = [(n.name, n.age) for n in humans if n.age >= 27 and n.age <= 32]
 # Iterate over all humans
-for i in humans:
-    # Check if human age is between 27 && 32
-    if (i.age >= 27) and (i.age <= 32):
-        # Create a tuple with the humans name and age
-        person_tuple = i.name, i.age
-        # Append the tuple to the f array
-        f.append(person_tuple)
+# for i in humans:
+#     # Check if human age is between 27 && 32
+#     if (i.age >= 27) and (i.age <= 32):
+#         # Create a tuple with the humans name and age
+#         person_tuple = i.name, i.age
+#         # Append the tuple to the f array
+#         f.append(person_tuple)
 print(f)
 
 # Write a list comprehension that creates a list of new Humans like the old
 # list, except with all the names uppercase and the ages with 5 added to them.
 # The "humans" list should be unmodified.
 print("All names uppercase:")
-g = []
+g = [Human(n.name.upper(), n.age+5) for n in humans]
 # Iterate over all humans
-for i in humans:
+# for i in humans:
     # Convert names to uppercase && add 5 to age
-    new_name = i.name.upper()
-    new_age = i.age + 5
-    # Create a new Human using the modified values
-    new_human = Human(new_name, new_age)
-    # Append the new Human to g array
-    g.append(new_human)
+    # new_name = i.name.upper()
+    # new_age = i.age + 5
+    # # Create a new Human using the modified values
+    # new_human = Human(new_name, new_age)
+    # # Append the new Human to g array
+    # g.append(new_human)
 print(g)
 
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
 import math
-h = []
+h = [math.sqrt(n.age) for n in humans]
 # Iterate over all humans
-for i in humans:
-    # Using the math import find the square root of the Human age
-    sqr_age = math.sqrt(i.age)
-    # Append the square root to the h array
-    h.append(sqr_age)
+# for i in humans:
+#     # Using the math import find the square root of the Human age
+#     sqr_age = math.sqrt(i.age)
+#     # Append the square root to the h array
+#     h.append(sqr_age)
 print(h)
