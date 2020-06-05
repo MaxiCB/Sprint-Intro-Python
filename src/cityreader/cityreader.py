@@ -14,20 +14,35 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
+# City class implementation
+class City:
+    def __init__(self, name, lat, lon):
+        self.name = name
+        self.lat = lat
+        self.lon = lon
+
 cities = []
 
-def cityreader(cities=[]):
-  # TODO Implement the functionality to read from the 'cities.csv' file
-  # For each city record, create a new City instance and add it to the 
-  # `cities` list
-    
-    return cities
+import csv
+def cityreader():
+  # Open the provided CSV
+  with open('cities.csv', newline='') as csv_file:
+      # Create a csv reader
+    reader = csv.DictReader(csv_file)
+      # Iterate through all rows in the csv
+    for row in reader:
+        # Using the row[''] build a city instance
+      # new_city = City(row['city'], row['lat'], row['lng'])
+        # Append to cities list
+      cities.append(City(row['city'], float(row['lat']), float(row['lng'])))
+  return cities
 
-cityreader(cities)
+# cityreader()
 
 # Print the list of cities (name, lat, lon), 1 record per line.
-for c in cities:
-    print(c)
+# for c in cities:
+#     print(c.name, c.lat, c.lon + '\n')
 
 # STRETCH GOAL!
 #
@@ -60,12 +75,16 @@ for c in cities:
 
 # TODO Get latitude and longitude values from the user
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  # within will hold the cities that fall within the specified region
+def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
   within = []
-
-  # TODO Ensure that the lat and lon valuse are all floats
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
+  # Need to check which numbers are larger to ensure math is always correct
+  # Iterate over cities
+  for i in cities:
+    if lat1 >= lat2:
+      if (i.lat <= lat1) and (i.lon <= lon1) and (i.lat >= lat2) and (i.lon >= lon2):
+        within.append(i)
+      elif lat1 <= lat2:
+        if (i.lat >= lat1) and (i.lon >= lon1) and (i.lat <= lat2) and (i.lon <= lon2):
+          within.append(i)
 
   return within

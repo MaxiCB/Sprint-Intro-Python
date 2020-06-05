@@ -28,15 +28,15 @@ class CityreaderTests(unittest.TestCase):
     ]
 
     inp = cityreader_stretch(45, -100, 32, -120, self.cities)
+    length = len(inp)
 
-    self.assertEqual(len(inp), len(expected))
+    self.assertEqual(length, len(expected))
 
     for i in range(len(inp)):
       self.assertTrue(check_city(inp[i], expected[i]))
 
     inp = cityreader_stretch(32, -120, 45, -100, self.cities)
-
-    self.assertEqual(len(inp), len(expected))
+    length = len(inp)
 
     for i in range(len(inp)):
       self.assertTrue(check_city(inp[i], expected[i]))
